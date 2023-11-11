@@ -14,6 +14,8 @@ public class PLMainScript : MonoBehaviour
     [SerializeField] private GameObject soundBullet;
     [SerializeField] private GameObject bulletPos;
 
+    [SerializeField] private float bulletSpeed = 0.1f;//発射した弾の速度　0.1fにするとごっつええ感じ
+
 
     //イクーーーーーーーーーーー（リーシン）
     //イクーーーーーーーーーーー（リーシン）
@@ -36,21 +38,24 @@ public class PLMainScript : MonoBehaviour
     /// <summary>
     /// マウス座標取得
     /// </summary>
-    private void GetMousePosition()
+    private Vector3 GetMousePosition()
     {
-        Vector3 test = Input.mousePosition;
-        test.z = 1;
-        mousePos = Camera.main.ScreenToWorldPoint(test);
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = 10f;
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         Debug.Log(mousePos);
+        return mousePos;
     }
 
-    /// <summary>
-    /// 回転
-    /// </summary>
-    private void RotatePlayerMouse()
+
+    private void LookAtMousePosition()
     {
-        this.transform.LookAt(new Vector3((mousePos.x + mousePos.z) * 10,0 ,mousePos.z));
+        Vector3 thisPos = this.transform.position;
+        Vector3 lookDir = GetMousePosition() - thisPos;
+        float angle = Mathf.Atan2(lookDir.x, lookDir.y) * Mathf.Rad2Deg;
+        this.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0,angle,0));
     }
+
 
     /// <summary>
     /// 移動
@@ -61,7 +66,7 @@ public class PLMainScript : MonoBehaviour
         float posX = Input.GetAxisRaw("Horizontal");
         float posZ = Input.GetAxisRaw("Vertical");
 
-        this.transform.position += new Vector3(posX, thisPos.y, posZ).normalized * playerSpeed;//一行でいいだろこれ
+        this.transform.position += new Vector3(posX, 0, posZ).normalized * playerSpeed;//一行でいいだろこれ
         
     }
 
@@ -70,17 +75,25 @@ public class PLMainScript : MonoBehaviour
     /// </summary>
     private void PlayerAttack()
     {
-        GameObject bullet = Instantiate(soundBullet, bulletPos.transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
-        //Bullet bulletScript = new Bullet();
-        //bulletScript.attributeID=
+        //GameObject bullet = Instantiate(soundBullet, bulletPos.transform.position,Quaternion.identity)) as GameObject;
+        GameObject gameObject = Instantiate(soundBullet, bulletPos.transform.position, this.gameObject.transform.rotation)as GameObject;
+        Bullet bulletScript = gameObject.GetComponent<Bullet>();
+        bulletScript.bulletSpeed = bulletSpeed;
     }
 
     private void FixedUpdate()
     {
-        GetMousePosition();
-        RotatePlayerMouse();
+        LookAtMousePosition();
         PlayerMove();
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            PlayerAttack();
+        }
+    }
+
+    private void Update()
+    {
         if (Input.GetMouseButtonDown(0))
         {
             PlayerAttack();
