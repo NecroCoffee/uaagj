@@ -20,15 +20,15 @@ public class Enemy : MonoBehaviour
             (transform.position, new Vector2
             (PlayerTr.position.x, PlayerTr.position.y),
             speed * Time.deltaTime);
-
-        
     }
 
+    // プレイヤーに衝突すると...
     void OnTriggerEnter(Collider collider)
     {
-        // PlayerにisTriggerつけてもらう
+        /* PlayerにisTriggerにチェックを付ける */
         if (collider.gameObject.tag == "Player")
         {
+            // 0.2秒後（仮）に削除させます。
             Destroy(gameObject, 0.2f);
         }
     }
