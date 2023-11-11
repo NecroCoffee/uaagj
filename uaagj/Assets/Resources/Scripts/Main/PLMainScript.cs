@@ -10,10 +10,15 @@ public class PLMainScript : MonoBehaviour
     [SerializeField] private float playerSpeed = 0.01f;
     [SerializeField] private Vector3 thisPos;
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private float energy;
+
+    [SerializeField] private GameObject soundBullet;
+    [SerializeField] private GameObject bulletPos;
+
 
     //イクーーーーーーーーーーー（リーシン）
-     private Vector3 mousePos;
+    //イクーーーーーーーーーーー（リーシン）
+    //イクーーーーーーーーーーー（リーシン）
+    private Vector3 mousePos;
 
     /// <summary>
     /// nullチェック
@@ -25,10 +30,7 @@ public class PLMainScript : MonoBehaviour
             thisPos = this.gameObject.transform.position;
         }
 
-        if (energy == null)
-        {
-            energy = 100f;//とりあえず100fを入れておく。後で変えたりする。
-        }
+        
     }
 
     /// <summary>
@@ -63,11 +65,26 @@ public class PLMainScript : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// プレイヤー
+    /// </summary>
+    private void PlayerAttack()
+    {
+        GameObject bullet = Instantiate(soundBullet, bulletPos.transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+        //Bullet bulletScript = new Bullet();
+        //bulletScript.attributeID=
+    }
+
     private void FixedUpdate()
     {
         GetMousePosition();
         RotatePlayerMouse();
         PlayerMove();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            PlayerAttack();
+        }
     }
 
 
