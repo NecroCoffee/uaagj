@@ -31,12 +31,16 @@ public class ENGenerator : MonoBehaviour
     private void Update()
     {
         currentTime += Time.deltaTime;
+
         if (currentTime >= generateDiff)
         {
+            SetGeneratePosition();
+            /*
             for(int i = 0; i < 4; i++)
             {
                 SetGeneratePosition();
             }
+            */
             currentTime = 0;
         }
     }

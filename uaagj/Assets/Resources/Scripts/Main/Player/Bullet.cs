@@ -31,17 +31,26 @@ public class Bullet : MonoBehaviour
     }
 
     // 敵に当たった時の処理
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
+        Debug.Log("OnTrigger");
+
         // 当たったオブジェクトが敵かどうか判定
-        if (collision.gameObject.tag != EnemyTagName) { return; }
+        if (collider.gameObject.tag != EnemyTagName) { return; }
+
+        Debug.Log("Enemy");
 
         // 敵なら弱点の属性を取得し、攻撃が有効か判定
         _plMainScript = GameObject.Find("Player").GetComponent<PLMainScript>();
-        if (collision.gameObject.GetComponent<ENMoveScript>().weakAttributeId != _plMainScript.SEattributeIndex)
+        Debug.Log(collider.gameObject.GetComponent<ENMoveScript>().weakAttributeId);
+        Debug.Log(_plMainScript.SEattributeIndex);
+        if (collider.gameObject.GetComponent<ENMoveScript>().weakAttributeId != _plMainScript.SEattributeIndex)
         { return; }
 
+        Debug.Log("EnemyDestroy");
+
         // 有効なら敵をDestroyする
-        Destroy(collision.gameObject);
+        Destroy(this.gameObject);
+        Destroy(collider.gameObject);
     }
 }

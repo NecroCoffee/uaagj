@@ -90,7 +90,7 @@ public class PLMainScript : MonoBehaviour
     {
         canAtack = false;
         seController = GameObject.Find("SEController").GetComponent<SEController>();
-        SEattributeIndex = seController.SEListIndex;
+        SEattributeIndex = seController.SEListIndex + 1;
 
         //GameObject bullet = Instantiate(soundBullet, bulletPos.transform.position,Quaternion.identity)) as GameObject;
         soundBulletObj = Instantiate(soundBullet, bulletPos.transform.position, this.gameObject.transform.rotation) as GameObject;
