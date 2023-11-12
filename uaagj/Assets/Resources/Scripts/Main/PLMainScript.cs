@@ -48,6 +48,9 @@ public class PLMainScript : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// ƒ}ƒEƒX‚Ì•ûŒü‚ğŒü‚©‚¹‚éˆ—
+    /// </summary>
     private void LookAtMousePosition()
     {
         Vector3 thisPos = this.transform.position;
@@ -86,10 +89,7 @@ public class PLMainScript : MonoBehaviour
         LookAtMousePosition();
         PlayerMove();
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            PlayerAttack();
-        }
+        
     }
 
     private void Update()
