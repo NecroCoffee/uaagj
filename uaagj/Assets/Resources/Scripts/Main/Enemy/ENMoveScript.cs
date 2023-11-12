@@ -52,11 +52,10 @@ public class ENMoveScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        GameObject gameObject = collision.gameObject;
-
-        if (gameObject.CompareTag("Bullet"))
+        //GameObject gameObject = collision.gameObject;
+        if (collision.gameObject.CompareTag("Bullet"))
         {
-
+            Debug.Log("EnemyDestroy");
             Death();
         }
     }
