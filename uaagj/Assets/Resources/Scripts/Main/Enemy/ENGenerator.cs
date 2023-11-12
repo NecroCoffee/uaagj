@@ -24,7 +24,7 @@ public class ENGenerator : MonoBehaviour
     private void SetGeneratePosition()
     {
         int generatePointNum = Random.Range(0, 8);
-        int generateEnemyNum = Random.Range(0, 4);
+        int generateEnemyNum = Random.Range(0, 3);
         Instantiate(Enemys[generateEnemyNum], generatePositionObjects[generatePointNum].transform.position, Quaternion.identity);
     }
 

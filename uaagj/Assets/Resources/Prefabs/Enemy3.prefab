@@ -117,7 +117,7 @@ MonoBehaviour:
   moveSpeed: 0.02
   playerObject: {fileID: 0}
   hitObject: {fileID: 0}
-  weakAttributeId: 3
+  weakAttributeId: 1
   thisMaterial: {fileID: 0}
   health: 0
   pulse: {fileID: 5404531759062921669, guid: bf70ce2c4dfaace4792b339ec4f829a0, type: 3}
