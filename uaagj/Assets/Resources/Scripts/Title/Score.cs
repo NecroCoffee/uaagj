@@ -6,14 +6,15 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     public Text scoreText;
-    int score = 1;
+    public int score =1;
     void Start()
     {
        
     }
     void Update()
     {
-        //score = Score.getscore();
+       // score = Score.getscore();
+       
         scoreText.text = string.Format("Score:{0}",score);
     }
 }

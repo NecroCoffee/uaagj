@@ -16,7 +16,7 @@ public class shootCon : MonoBehaviour
     Transform myTransform = this.transform;
     Vector3 worldPos = myTransform.position;
    
-        if( worldPos.x > -1.3)
+        if( worldPos.x > -1.4)
         {
             transform.Translate(-0.02f, 0, 0);
         }else{

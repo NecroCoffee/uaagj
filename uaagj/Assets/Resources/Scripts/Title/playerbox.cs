@@ -19,7 +19,7 @@ public class playerbox : MonoBehaviour
    
         if( worldPos.x > 2.5)
         {
-            transform.Translate(-0.005f, 0, 0);
+            transform.Translate(-0.007f, 0, 0);
         }
         if(delta > 6.6f)
         {
