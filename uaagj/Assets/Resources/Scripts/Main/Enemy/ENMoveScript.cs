@@ -31,16 +31,10 @@ public class ENMoveScript : MonoBehaviour
     /// <summary>
     /// ìGíeè¡ñ≈éûÇ…Ç¢Ç¢ä¥Ç∂ÇÃèàóùÇèëÇ¢ÇΩÇËÇ∑ÇÈ
     /// </summary>
-    /*private void Death()
+    private void Death()
     {
-        
+        Instantiate(pulse);
         Destroy(this.gameObject);
-    }
-    */
-
-    private void OnDestroy()
-    {
-        Instantiate(pulse, this.gameObject.transform.position, Quaternion.identity);
     }
 
 
@@ -58,11 +52,11 @@ public class ENMoveScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        GameObject gameObject = collision.gameObject;
-
-        if (gameObject.CompareTag("Bullet"))
+        //GameObject gameObject = collision.gameObject;
+        if (collision.gameObject.CompareTag("Bullet"))
         {
-            //Death();
+            Debug.Log("EnemyDestroy");
+            Death();
         }
     }
 
