@@ -42,7 +42,13 @@ public class Bullet : MonoBehaviour
         Instantiate(_palse, collider.gameObject.transform);
 
         // —LŒø‚È‚ç“G‚ðDestroy‚·‚é
+
+        
         Destroy(this.gameObject);
         Destroy(collider.gameObject);
+        
+
+        //Destroy(collider.gameObject);
+        //Destroy(this.gameObject);
     }
 }

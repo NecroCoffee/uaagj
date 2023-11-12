@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9035690769748287491}
   m_Layer: 0
   m_Name: Pulse
-  m_TagString: Bullet
+  m_TagString: Pulse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,4 +111,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f30315785953b428b7098e4a7e5ca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pulse: {fileID: 5404531759062921669}
   maxSize: 5
