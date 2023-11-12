@@ -31,10 +31,16 @@ public class ENMoveScript : MonoBehaviour
     /// <summary>
     /// “G’eÁ–Å‚É‚¢‚¢Š´‚¶‚Ìˆ—‚ğ‘‚¢‚½‚è‚·‚é
     /// </summary>
-    private void Death()
+    /*private void Death()
     {
-        Instantiate(pulse);
+        
         Destroy(this.gameObject);
+    }
+    */
+
+    private void OnDestroy()
+    {
+        Instantiate(pulse, this.gameObject.transform.position, Quaternion.identity);
     }
 
 
@@ -56,8 +62,7 @@ public class ENMoveScript : MonoBehaviour
 
         if (gameObject.CompareTag("Bullet"))
         {
-
-            Death();
+            //Death();
         }
     }
 

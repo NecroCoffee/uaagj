@@ -22,8 +22,7 @@ public class ENOnDestroyPulse : MonoBehaviour
 
 
 
-
-    private void Update()
+        private void Update()
     {
         Boom();        
     }

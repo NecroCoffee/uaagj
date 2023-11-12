@@ -26,9 +26,7 @@ public class PLMainScript : MonoBehaviour
     [SerializeField] private float bulletSpeed = 1f;//発射した弾の速度　0.1fにするとごっつええ感じ
 
 
-    //イクーーーーーーーーーーー（リーシン）
-    //イクーーーーーーーーーーー（リーシン）
-    //イクーーーーーーーーーーー（リーシン）
+
     private Vector3 mousePos;
 
     /// <summary>
