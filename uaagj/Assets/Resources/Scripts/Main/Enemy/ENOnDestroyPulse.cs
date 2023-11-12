@@ -20,10 +20,15 @@ public class ENOnDestroyPulse : MonoBehaviour
         }
     }
 
-
-
-        private void Update()
+    private void Update()
     {
         Boom();        
+    }
+
+    // ƒpƒ‹ƒX‚ª“–‚½‚Á‚½“G‚ğ“|‚µ‚ÄŒ‚”j‰¹‚ğ”­¶‚³‚¹‚é
+    private void OnTriggerEnter(Collider other)
+    {
+        Instantiate(this, other.gameObject.transform);
+        Destroy(other.gameObject);
     }
 }

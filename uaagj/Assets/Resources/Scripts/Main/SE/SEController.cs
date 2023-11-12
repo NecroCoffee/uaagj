@@ -32,6 +32,10 @@ public class SEController : MonoBehaviour
         _SEIconImg = _SEIconObj.GetComponent<Image>();
         _SEAttributeImg = _SEGuideObj.transform.Find(_SEAttributeObjName).GetComponent<Image>();
         _SEVolumeText = _SEGuideObj.transform.Find(_SEVolumeObjName).GetComponent<Text>();
+
+        // 属性リスト先頭の要素をセット
+        _SEIconImg.sprite = _SEDataBase.SEList[SEListIndex].Icon;
+        SEClip = _SEDataBase.SEList[SEListIndex].audioClip;
     }
 
     // Update is called once per frame

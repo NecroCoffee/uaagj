@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: 2Water
   m_EditorClassIdentifier: 
   AttributeId: 2
-  Attribute: {fileID: 0}
-  Volume: 15
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 607e37b29a378ff43b08e4a9f9d82cdd, type: 3}
   audioClip: {fileID: 8300000, guid: 0b831f5bb2458ce4fb8228c06ffa8be4, type: 3}

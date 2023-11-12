@@ -98,7 +98,6 @@ public class PLMainScript : MonoBehaviour
         // 効果音の再生
         audioSource.PlayOneShot(seController.SEClip);
 
-
         // エフェクトの生成
         Vector3 particlePos = bulletPos.transform.position;
         particlePos.y = 1;
