@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class ENOnDestroyPulse : MonoBehaviour
 {
+    [SerializeField] private GameObject pulse;
     [SerializeField] private float maxSize = 2f;//‚±‚ê‚ğ‚¢‚¶‚é‚Æ”ÍˆÍ‚ğ’²®‚Å‚«‚é
     /// <summary>
     /// ’e‚¯‚é@‚¢‚¢Š´‚¶‚É if‚ÌğŒ®‚Ì‰E‘¤‚ğ‚¢‚¶‚é‚Æ”ÍˆÍ‚ğ’²®‚Å‚«‚é
@@ -28,7 +29,10 @@ public class ENOnDestroyPulse : MonoBehaviour
     // ƒpƒ‹ƒX‚ª“–‚½‚Á‚½“G‚ğ“|‚µ‚ÄŒ‚”j‰¹‚ğ”­¶‚³‚¹‚é
     private void OnTriggerEnter(Collider other)
     {
-        Instantiate(this, other.gameObject.transform);
-        Destroy(other.gameObject);
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Instantiate(pulse, other.gameObject.transform);
+            Destroy(other.gameObject);
+        }
     }
 }
