@@ -19,6 +19,8 @@ public class SEController : MonoBehaviour
     private Text _SEVolumeText;
     private const string _SEVolumeTextFormat = "{0}db";
 
+    public AudioClip SEClip;
+
     // “ü—Í
     private const string _InputMouseWheel = "Mouse ScrollWheel";
     private float _mouseVelocity_y = 0;
@@ -59,8 +61,11 @@ public class SEController : MonoBehaviour
     {
         // UI‚Ì•\¦‚ğØ‚è‘Ö‚¦
         _SEIconImg.sprite = _SEDataBase.SEList[SEListIndex].Icon;
-        _SEAttributeImg.sprite = _SEDataBase.SEList[SEListIndex].Attribute;
-        _SEVolumeText.text = string.Format(_SEVolumeTextFormat, _SEDataBase.SEList[SEListIndex].Volume.ToString());
+        //_SEAttributeImg.sprite = _SEDataBase.SEList[SEListIndex].Attribute;
+        //_SEVolumeText.text = string.Format(_SEVolumeTextFormat, _SEDataBase.SEList[SEListIndex].Volume.ToString());
+
+        // Œø‰Ê‰¹‚ğæ“¾
+        SEClip = _SEDataBase.SEList[SEListIndex].audioClip;
     }
 
 

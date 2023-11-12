@@ -20,11 +20,6 @@ public class Bullet : MonoBehaviour
         this.transform.localPosition += transform.forward * bulletSpeed;
     }
 
-    private void OnEnable()
-    {
-        Destroy(this.gameObject, 5f);//消滅時間は適当に調整しといてください
-    }
-
     private void FixedUpdate()
     {
         BulletMove();
@@ -33,21 +28,13 @@ public class Bullet : MonoBehaviour
     // 敵に当たった時の処理
     private void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("OnTrigger");
-
         // 当たったオブジェクトが敵かどうか判定
         if (collider.gameObject.tag != EnemyTagName) { return; }
 
-        Debug.Log("Enemy");
-
         // 敵なら弱点の属性を取得し、攻撃が有効か判定
         _plMainScript = GameObject.Find("Player").GetComponent<PLMainScript>();
-        Debug.Log(collider.gameObject.GetComponent<ENMoveScript>().weakAttributeId);
-        Debug.Log(_plMainScript.SEattributeIndex);
         if (collider.gameObject.GetComponent<ENMoveScript>().weakAttributeId != _plMainScript.SEattributeIndex)
         { return; }
-
-        Debug.Log("EnemyDestroy");
 
         // 有効なら敵をDestroyする
         Destroy(this.gameObject);

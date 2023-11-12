@@ -23,7 +23,7 @@ public class PLMainScript : MonoBehaviour
     private GameObject bulletParticleObj;   // 生成したエフェクト
     private bool canAtack = true;
 
-    [SerializeField] private float bulletSpeed = 5f;//発射した弾の速度　0.1fにするとごっつええ感じ
+    [SerializeField] private float bulletSpeed = 1f;//発射した弾の速度　0.1fにするとごっつええ感じ
 
 
     //イクーーーーーーーーーーー（リーシン）
@@ -97,9 +97,13 @@ public class PLMainScript : MonoBehaviour
         Bullet bulletScript = soundBulletObj.GetComponent<Bullet>();
         bulletScript.bulletSpeed = bulletSpeed;
 
+        // 効果音の再生
+        audioSource.PlayOneShot(seController.SEClip);
+
+
         // エフェクトの生成
         Vector3 particlePos = bulletPos.transform.position;
-        particlePos.y = 2;
+        particlePos.y = 1;
         bulletParticleObj = Instantiate(bulletParticle, particlePos, bulletPos.transform.rotation);
     }
 

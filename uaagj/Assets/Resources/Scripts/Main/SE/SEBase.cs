@@ -9,8 +9,8 @@ using UnityEngine;
 public class SEBase : ScriptableObject
 {
     public int AttributeId;         // 属性のID
-    public Sprite Attribute;        // 属性
-    public int Volume;              // 威力
+    //public Sprite Attribute;        // 属性
+    //public int Volume;              // 威力
     public Sprite Icon;             // 表示するアイコン
     public AudioClip audioClip;     // 対応するSE
 }
