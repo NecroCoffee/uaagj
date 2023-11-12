@@ -11,7 +11,7 @@ public class ENMoveScript : MonoBehaviour
     [SerializeField] private GameObject playerObject;
     [SerializeField] private GameObject hitObject;//当たり判定用オブジェクト　なんか適当に入れといてください
 
-    [SerializeField]private int AttributeId;//DataBaseからどうやって持ってくるのかわからないのでとりあえず放置
+    [SerializeField] public int AttributeId;//DataBaseからどうやって持ってくるのかわからないのでとりあえず放置
     [SerializeField] private Material thisMaterial;
     [SerializeField] private int health;
 

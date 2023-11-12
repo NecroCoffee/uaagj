@@ -7,7 +7,7 @@ public class SEController : MonoBehaviour
 {
     [SerializeField] private SEDataBase _SEDataBase;
 
-    private int _SEListIndex = 0;
+    public int SEListIndex = 0;
 
     [Header("UI")]
     [SerializeField] private GameObject _SEIconObj;
@@ -41,14 +41,14 @@ public class SEController : MonoBehaviour
         // Œø‰Ê‰¹‚ÌØ‚è‘Ö‚¦(ŽŸ‚ÌŒø‰Ê‰¹)
         if (ChangeUpChack())
         {
-            _SEListIndex++;
+            SEListIndex++;
             ChangeSE();
         }
 
         // Œø‰Ê‰¹‚ÌØ‚è‘Ö‚¦(‘O‚ÌŒø‰Ê‰¹)
         if (ChangeDownCheck())
         {
-            _SEListIndex--;
+            SEListIndex--;
             ChangeSE();
         }
 
@@ -58,15 +58,15 @@ public class SEController : MonoBehaviour
     private void ChangeSE()
     {
         // UI‚Ì•\Ž¦‚ðØ‚è‘Ö‚¦
-        _SEIconImg.sprite = _SEDataBase.SEList[_SEListIndex].Icon;
-        _SEAttributeImg.sprite = _SEDataBase.SEList[_SEListIndex].Attribute;
-        _SEVolumeText.text = string.Format(_SEVolumeTextFormat, _SEDataBase.SEList[_SEListIndex].Volume.ToString());
+        _SEIconImg.sprite = _SEDataBase.SEList[SEListIndex].Icon;
+        _SEAttributeImg.sprite = _SEDataBase.SEList[SEListIndex].Attribute;
+        _SEVolumeText.text = string.Format(_SEVolumeTextFormat, _SEDataBase.SEList[SEListIndex].Volume.ToString());
     }
 
 
     private bool ChangeUpChack()
     {
-        if (_SEListIndex >= _SEDataBase.SEList.Count - 1) { return false; }
+        if (SEListIndex >= _SEDataBase.SEList.Count - 1) { return false; }
         if (Input.GetAxisRaw(_InputMouseWheel) <= 0) { return false; }
 
         return true;
@@ -74,7 +74,7 @@ public class SEController : MonoBehaviour
 
     private bool ChangeDownCheck()
     {
-        if (_SEListIndex <= 0) { return false; }
+        if (SEListIndex <= 0) { return false; }
         if (Input.GetAxisRaw(_InputMouseWheel) >= 0) { return false; }
 
         return true;

@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01609dfd8dd305446a92334f73c2a07c, type: 3}
-  m_Name: SE2
+  m_Name: 4Rock
   m_EditorClassIdentifier: 
-  AttributeId: 0
-  AttributeName: "\u6C34"
-  Volume: 0
+  AttributeId: 4
+  Attribute: {fileID: 0}
+  Volume: 25
   Icon: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 2e3b6271db6e05f41bde1ec47ea6ce13, type: 3}
