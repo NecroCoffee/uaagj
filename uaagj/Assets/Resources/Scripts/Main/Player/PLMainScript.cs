@@ -23,7 +23,7 @@ public class PLMainScript : MonoBehaviour
     private GameObject bulletParticleObj;   // 生成したエフェクト
     private bool canAtack = true;
 
-    [SerializeField] private float bulletSpeed = 1f;//発射した弾の速度　0.1fにするとごっつええ感じ
+    [SerializeField] private float bulletSpeed = 0.1f;//発射した弾の速度　0.1fにするとごっつええ感じ
 
 
 
@@ -94,6 +94,7 @@ public class PLMainScript : MonoBehaviour
         soundBulletObj = Instantiate(soundBullet, bulletPos.transform.position, this.gameObject.transform.rotation) as GameObject;
         Bullet bulletScript = soundBulletObj.GetComponent<Bullet>();
         bulletScript.bulletSpeed = bulletSpeed;
+        bulletScript._player = this.gameObject;
 
         // 効果音の再生
         audioSource.PlayOneShot(seController.SEClip);

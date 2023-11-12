@@ -15,11 +15,13 @@ public class Bullet : MonoBehaviour
     private const string EnemyTagName = "Enemy";
     private PLMainScript _plMainScript;
 
+    public GameObject _player;
+
     [SerializeField] private GameObject _palse;
 
     private void BulletMove()
     {
-        this.transform.localPosition += transform.forward * bulletSpeed;
+        this.transform.localPosition += _player.transform.forward * bulletSpeed;
     }
 
     private void FixedUpdate()
@@ -42,7 +44,7 @@ public class Bullet : MonoBehaviour
         Instantiate(_palse, collider.gameObject.transform);
 
         // —LŒø‚È‚ç“G‚ðDestroy‚·‚é
-        Destroy(this.gameObject);
         Destroy(collider.gameObject);
+        Destroy(this.gameObject);
     }
 }
