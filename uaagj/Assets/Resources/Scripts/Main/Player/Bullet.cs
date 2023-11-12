@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour
 
         // “G‚È‚çã“_‚Ì‘®«‚ğæ“¾‚µAUŒ‚‚ª—LŒø‚©”»’è
         _plMainScript = GameObject.Find("Player").GetComponent<PLMainScript>();
-        if (collision.gameObject.GetComponent<ENMoveScript>().AttributeId != _plMainScript.SEattributeIndex)
+        if (collision.gameObject.GetComponent<ENMoveScript>().weakAttributeId != _plMainScript.SEattributeIndex)
         { return; }
 
         // —LŒø‚È‚ç“G‚ğDestroy‚·‚é

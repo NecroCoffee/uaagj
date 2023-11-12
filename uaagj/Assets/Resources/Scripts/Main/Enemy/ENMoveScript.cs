@@ -11,7 +11,7 @@ public class ENMoveScript : MonoBehaviour
     [SerializeField] private GameObject playerObject;//awakeの時に拾ってくる
     [SerializeField] private GameObject hitObject;//当たり判定用オブジェクト　なんか適当に入れといてください
 
-    [SerializeField] private int weakAttributeId;//DataBaseからどうやって持ってくるのかわからないのでとりあえず放置
+    [SerializeField] public int weakAttributeId;//DataBaseからどうやって持ってくるのかわからないのでとりあえず放置
     [SerializeField] private Material thisMaterial;
     [SerializeField] private int health;
 
