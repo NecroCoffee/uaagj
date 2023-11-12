@@ -222,6 +222,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   soundBullet: {fileID: 2617341544078190124, guid: 1d7ff2010a074b745910398a7b20666e, type: 3}
   bulletPos: {fileID: 2130779718034513544}
+  bulletParticle: {fileID: 199914227925677948, guid: 013f44ffe1762a2459884c2ec5c704e0, type: 3}
   bulletSpeed: 0.1
 --- !u!82 &4207387552685827855
 AudioSource:

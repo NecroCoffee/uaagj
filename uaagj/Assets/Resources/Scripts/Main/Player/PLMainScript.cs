@@ -11,10 +11,19 @@ public class PLMainScript : MonoBehaviour
     [SerializeField] private Vector3 thisPos;
     [SerializeField] private AudioSource audioSource;
 
-    [SerializeField] private GameObject soundBullet;
-    [SerializeField] private GameObject bulletPos;
+    //[SerializeField] private bool isAtack = false;   // 効果音が発生している最中かどうか
+    [SerializeField] private GameObject soundBullet;    // 当たり判定となるオブジェクト
+    [SerializeField] private GameObject bulletPos;      // 当たり判定が発射される位置
+    private GameObject soundBulletObj;
 
-    [SerializeField] private float bulletSpeed = 0.1f;//発射した弾の速度　0.1fにするとごっつええ感じ
+    private SEController seController;
+    public int SEattributeIndex { get; private set; } = 0;  // 攻撃時の属性のIndex
+
+    [SerializeField] private GameObject bulletParticle; // 当たり判定のエフェクト
+    private GameObject bulletParticleObj;   // 生成したエフェクト
+    private bool canAtack = true;
+
+    [SerializeField] private float bulletSpeed = 5f;//発射した弾の速度　0.1fにするとごっつええ感じ
 
 
     //イクーーーーーーーーーーー（リーシン）
@@ -43,7 +52,7 @@ public class PLMainScript : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 10f;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        Debug.Log(mousePos);
+        //Debug.Log(mousePos);
         return mousePos;
     }
 
@@ -75,30 +84,44 @@ public class PLMainScript : MonoBehaviour
 
     /// <summary>
     /// プレイヤー
+    /// 効果音の発生
     /// </summary>
     private void PlayerAttack()
     {
+        canAtack = false;
+        seController = GameObject.Find("SEController").GetComponent<SEController>();
+        SEattributeIndex = seController.SEListIndex;
+
         //GameObject bullet = Instantiate(soundBullet, bulletPos.transform.position,Quaternion.identity)) as GameObject;
-        GameObject gameObject = Instantiate(soundBullet, bulletPos.transform.position, this.gameObject.transform.rotation)as GameObject;
-        Bullet bulletScript = gameObject.GetComponent<Bullet>();
+        soundBulletObj = Instantiate(soundBullet, bulletPos.transform.position, this.gameObject.transform.rotation) as GameObject;
+        Bullet bulletScript = soundBulletObj.GetComponent<Bullet>();
         bulletScript.bulletSpeed = bulletSpeed;
+
+        // エフェクトの生成
+        Vector3 particlePos = bulletPos.transform.position;
+        particlePos.y = 2;
+        bulletParticleObj = Instantiate(bulletParticle, particlePos, bulletPos.transform.rotation);
     }
 
     private void FixedUpdate()
     {
         LookAtMousePosition();
-        PlayerMove();
-
-        
+        PlayerMove(); 
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (canAtack && Input.GetMouseButtonDown(0))
         {
             PlayerAttack();
         }
-    }
 
+        if (bulletParticleObj != null && bulletParticleObj.GetComponent<ParticleSystem>().isStopped)
+        {
+            Destroy(bulletParticleObj);
+            Destroy(soundBulletObj);
+            canAtack = true;
+        }
+    }
 
 }
