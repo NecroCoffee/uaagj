@@ -15,6 +15,8 @@ public class Bullet : MonoBehaviour
     private const string EnemyTagName = "Enemy";
     private PLMainScript _plMainScript;
 
+    [SerializeField] private GameObject _palse;
+
     private void BulletMove()
     {
         this.transform.localPosition += transform.forward * bulletSpeed;
@@ -35,6 +37,9 @@ public class Bullet : MonoBehaviour
         _plMainScript = GameObject.Find("Player").GetComponent<PLMainScript>();
         if (collider.gameObject.GetComponent<ENMoveScript>().weakAttributeId != _plMainScript.SEattributeIndex)
         { return; }
+
+        // Œ‚”j‚µ‚½“G‚ÌˆÊ’u‚©‚çŒ‚”j‰¹‚ğ”­¶
+        Instantiate(_palse, collider.gameObject.transform);
 
         // —LŒø‚È‚ç“G‚ğDestroy‚·‚é
         Destroy(this.gameObject);

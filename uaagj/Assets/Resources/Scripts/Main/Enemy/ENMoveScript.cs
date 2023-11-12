@@ -28,6 +28,7 @@ public class ENMoveScript : MonoBehaviour
         this.transform.localPosition += transform.forward * moveSpeed;
     }
 
+    /*
     /// <summary>
     /// ìGíeè¡ñ≈éûÇ…Ç¢Ç¢ä¥Ç∂ÇÃèàóùÇèëÇ¢ÇΩÇËÇ∑ÇÈ
     /// </summary>
@@ -36,6 +37,7 @@ public class ENMoveScript : MonoBehaviour
         Instantiate(pulse);
         Destroy(this.gameObject);
     }
+    */
 
 
     private void Awake()
@@ -50,6 +52,7 @@ public class ENMoveScript : MonoBehaviour
         Move();
     }
 
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         //GameObject gameObject = collision.gameObject;
@@ -59,5 +62,6 @@ public class ENMoveScript : MonoBehaviour
             Death();
         }
     }
+    */
 
 }
